@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import filter from '../../queryHelpers/filterQuery';
 import { TShoes } from './shoes.interface';
 import { ShoesModel } from './shoes.model';
 
@@ -6,8 +8,9 @@ const createShoesIntoDB = async (shoes: TShoes) => {
   return result;
 };
 
-const getAllShoesFromDB = async () => {
-  const result = await ShoesModel.find();
+const getAllShoesFromDB = async (query: any) => {
+  const filterQuery = filter(ShoesModel.find(), query);
+  const result = await filterQuery.find();
   return result;
 };
 

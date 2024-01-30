@@ -18,7 +18,7 @@ const createShoes = async (req: Request, res: Response, next: NextFunction) => {
 
 const getAllShoes = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await shoesServices.getAllShoesFromDB();
+    const result = await shoesServices.getAllShoesFromDB(req.query);
     res.status(201).json({
       success: true,
       statusCode: 201,
