@@ -1,5 +1,7 @@
+import config from '../../config';
 import { RegistrationModel } from '../registration/registration.model';
 import { TLogin } from './login.interface';
+import jwt from 'jsonwebtoken';
 
 const loginUser = async (payload: TLogin) => {
   const user = await RegistrationModel.isUserExistByUserName(payload?.userName);
@@ -16,12 +18,12 @@ const loginUser = async (payload: TLogin) => {
     throw new Error('password not matched');
   }
 
-  //   const jswPayload = {
-  //     // username: user.username,
-  //     // password: user.password,
-  //     email: user.email,
-  //     role: user.role,
-  //   };
+  const jswPayload = {
+    // username: user.username,
+    // password: user.password,
+    email: user.email,
+    role: user.role,
+  };
 
   const token = jwt.sign(jswPayload, config.jwt_access_secret as string, {
     expiresIn: '10d',
@@ -32,4 +34,8 @@ const loginUser = async (payload: TLogin) => {
   };
 
   return result;
+};
+
+export const loginService = {
+  loginUser,
 };

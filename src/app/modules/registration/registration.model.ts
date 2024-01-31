@@ -32,7 +32,7 @@ registrationSchema.pre('save', async function (next) {
   next();
 });
 
-registrationSchema.statics.isUserExistByUsername = async function (
+registrationSchema.statics.isUserExistByUserName = async function (
   userName: string,
 ) {
   return await RegistrationModel.findOne({
