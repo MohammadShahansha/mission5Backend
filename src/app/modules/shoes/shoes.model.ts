@@ -38,6 +38,10 @@ const ShoesSchema = new Schema<TShoes>({
     type: String,
     required: true,
   },
+  shoesImage: {
+    type: String,
+    required: true,
+  },
 });
 
 export const ShoesModel = model<TShoes>('Shoe', ShoesSchema);

@@ -8,4 +8,5 @@ export type TShoes = {
   style: string;
   size: string;
   color: string;
+  shoesImage: string;
 };

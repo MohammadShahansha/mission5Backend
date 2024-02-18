@@ -13,6 +13,13 @@ const getAllShoesFromDB = async (query: any) => {
   const result = await filterQuery.find();
   return result;
 };
+const deleteShoesFromDB = async (_id: string) => {
+  const result = await ShoesModel.findByIdAndDelete(
+    { _id },
+    { isDeleted: true },
+  );
+  return result;
+};
 
 const updateShoesFromDB = async (_id: string, shoesData: TShoes) => {
   const result = await ShoesModel.findByIdAndUpdate({ _id }, shoesData, {
@@ -24,5 +31,6 @@ const updateShoesFromDB = async (_id: string, shoesData: TShoes) => {
 export const shoesServices = {
   createShoesIntoDB,
   getAllShoesFromDB,
+  deleteShoesFromDB,
   updateShoesFromDB,
 };
