@@ -10,4 +10,5 @@ router.post(
   sellsController.createSellsHistory,
 );
 router.get('/get-sells-history', sellsController.getAllSellsHistory);
+router.get('/buyer-request', sellsController.getAllSellsHistoryForBuyer);
 export const sellsRoutes = router;

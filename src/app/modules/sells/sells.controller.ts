@@ -12,7 +12,17 @@ const createSellsHistory = catchAsync(async (req, res) => {
 });
 
 const getAllSellsHistory = catchAsync(async (req, res) => {
-  const result = await sellsService.getAllSellsHistoryFromDB();
+  const { interval } = req.query;
+  const result = await sellsService.getAllSellsHistoryFromDB(interval);
+  res.status(201).json({
+    success: true,
+    statusCode: 201,
+    message: 'Sells history retrived successfully',
+    data: result,
+  });
+});
+const getAllSellsHistoryForBuyer = catchAsync(async (req, res) => {
+  const result = await sellsService.getAllSellsHistoryForBuyerFromDB();
   res.status(201).json({
     success: true,
     statusCode: 201,
@@ -23,4 +33,5 @@ const getAllSellsHistory = catchAsync(async (req, res) => {
 export const sellsController = {
   createSellsHistory,
   getAllSellsHistory,
+  getAllSellsHistoryForBuyer,
 };
