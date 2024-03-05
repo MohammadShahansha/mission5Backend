@@ -15,8 +15,23 @@ const getAllPolishRequestFromDB = async () => {
   });
   return result;
 };
+const updatePolishRequestFromDB = async (
+  _id: string,
+  polishData: TPolishRequest,
+) => {
+  const result = await polishRequestModel.findByIdAndUpdate(
+    { _id },
+    polishData,
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+  return result;
+};
 
 export const polishService = {
   createPolishRequestIntoDB,
   getAllPolishRequestFromDB,
+  updatePolishRequestFromDB,
 };

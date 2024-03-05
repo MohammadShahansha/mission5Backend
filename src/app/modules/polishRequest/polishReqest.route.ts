@@ -10,4 +10,9 @@ router.post(
   polishController.createPolishRequest,
 );
 router.get('/get-polish-request', polishController.getAllPolishRequest);
+router.put(
+  '/update-request-status/:_id',
+  // validateRequest(polishValidation.updatedPolishValidationSchema),
+  polishController.updatePolishRequest,
+);
 export const polishRequest = router;
