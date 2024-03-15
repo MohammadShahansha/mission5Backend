@@ -28,9 +28,20 @@ const updateShoesFromDB = async (_id: string, shoesData: TShoes) => {
   });
   return result;
 };
+
+const getSingleDataByIdFromDB = async (id: string) => {
+  const result = await ShoesModel.findOne({ id });
+  return result;
+};
+const deleteMultipleShoesFromDB = async (ids: string[]) => {
+  const result = await ShoesModel.deleteMany({ _id: { $in: ids } });
+  return result;
+};
 export const shoesServices = {
   createShoesIntoDB,
   getAllShoesFromDB,
   deleteShoesFromDB,
   updateShoesFromDB,
+  getSingleDataByIdFromDB,
+  deleteMultipleShoesFromDB,
 };

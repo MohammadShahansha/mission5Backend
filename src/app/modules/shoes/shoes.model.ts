@@ -6,6 +6,11 @@ const ShoesSchema = new Schema<TShoes>({
     type: String,
     required: true,
   },
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   price: {
     type: Number,
     required: true,

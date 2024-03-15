@@ -3,6 +3,7 @@ import { z } from 'zod';
 const shoesValidationSchema = z.object({
   body: z.object({
     name: z.string(),
+    id: z.string(),
     price: z.number(),
     quantity: z.number(),
     releaseDate: z.string(),
@@ -17,6 +18,7 @@ const shoesValidationSchema = z.object({
 const UpdateShoesValidationSchema = z.object({
   body: z.object({
     name: z.string().optional(),
+    id: z.string().optional(),
     price: z.number().optional(),
     quantity: z.number().optional(),
     releaseDate: z.string().optional(),

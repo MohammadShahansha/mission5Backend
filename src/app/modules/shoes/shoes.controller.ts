@@ -78,9 +78,48 @@ const updateShoes = async (req: Request, res: Response) => {
     });
   }
 };
+
+const getSingleShoeById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { id } = req.params;
+    const result = await shoesServices.getSingleDataByIdFromDB(id);
+    res.status(201).json({
+      success: true,
+      statusCode: 201,
+      message: 'Shoe retrive successfully',
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const deletelMultipleShoes = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { _id } = req.body;
+    await shoesServices.deleteMultipleShoesFromDB(_id);
+    res.status(201).json({
+      success: true,
+      statusCode: 201,
+      message: 'Shoes deleted successfully',
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 export const shoesControllers = {
   createShoes,
   getAllShoes,
   deletelShoes,
   updateShoes,
+  getSingleShoeById,
+  deletelMultipleShoes,
 };
