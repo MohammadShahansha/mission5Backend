@@ -3,6 +3,10 @@ import { loginService } from './login.service';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const userLogin = async (req: Request, res: Response) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://warm-shortbread-0db074.netlify.app',
+  );
   try {
     const result = await loginService.loginUser(req.body);
     res.status(201).json({

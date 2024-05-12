@@ -8,8 +8,13 @@ import { polishRequest } from './app/modules/polishRequest/polishReqest.route';
 const app: Application = express();
 
 //parsers
+app.use(
+  cors({
+    origin: 'https://warm-shortbread-0db074.netlify.app',
+    credentials: true,
+  }),
+);
 app.use(express.json());
-app.use(cors());
 
 app.use('/api', shoesRoutes);
 app.use('/api/auth', registerRoutes);
@@ -20,4 +25,13 @@ app.use('/api', polishRequest);
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
+app.options('*', cors());
 export default app;
+
+// const corsConfig = {
+//   origin: 'https://warm-shortbread-0db074.netlify.app',
+//   credentials: true,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+// };
+// app.use(cors(corsConfig));
+// app.options("", cors(corsConfig))
