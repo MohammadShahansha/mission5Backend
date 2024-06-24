@@ -5,7 +5,8 @@ import { loginService } from './login.service';
 const userLogin = async (req: Request, res: Response) => {
   res.header(
     'Access-Control-Allow-Origin',
-    'https://warm-shortbread-0db074.netlify.app',
+    // 'https://warm-shortbread-0db074.netlify.app',
+    'http://localhost:5173',
   );
   try {
     const result = await loginService.loginUser(req.body);
