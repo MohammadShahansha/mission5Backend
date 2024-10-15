@@ -29,14 +29,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-// app.use(cors());
-
-// app.use(
-//   cors({
-//     origin: 'https://warm-shortbread-0db074.netlify.app',
-//     credentials: true,
-//   }),
-// );
 app.use(express.json());
 
 app.use('/api', shoesRoutes);
